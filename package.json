@@ -1,0 +1,40 @@
+{
+  "name": "@ekkos/mcp-server",
+  "version": "2.0.0",
+  "description": "ekkOS Memory MCP Server - Secure API-based authentication. Only requires EKKOS_API_KEY (no infrastructure secrets).",
+  "type": "module",
+  "bin": {
+    "ekkos-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "build/**/*"
+  ],
+  "keywords": [
+    "ekkos",
+    "mcp",
+    "memory",
+    "ai",
+    "cursor",
+    "windsurf",
+    "claude",
+    "vscode"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekkostech/ekkos"
+  },
+  "author": "ekkOS <dev@ekkos.dev>",
+  "license": "Proprietary"
+}
