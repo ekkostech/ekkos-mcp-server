@@ -90,74 +90,74 @@ The MCP server will be available in all chat sessions.
 
 ## 35 MCP Tools
 
-Your AI gets access to **35 memory tools** across 8 categories:
+Your AI gets access to **35 memory tools** across 8 categories. [Full documentation →](https://docs.ekkos.dev/tools)
 
 ### Core Memory (7)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_Search` | Search all 11 memory layers for patterns, solutions, and context |
-| `ekkOS_Forge` | Create a new pattern from a learned solution |
-| `ekkOS_Directive` | Create user rules (MUST/NEVER/PREFER/AVOID) |
-| `ekkOS_Context` | Get relevant context for a task (episodes + patterns + plan) |
-| `ekkOS_Capture` | Capture a memory event (code change, chat, command, etc.) |
-| `ekkOS_Codebase` | Search project codebase embeddings |
-| `ekkOS_Recall` | Recall past conversations by time |
+| [`ekkOS_Search`](https://docs.ekkos.dev/tools/search) | Search all memory layers for patterns, solutions, and context |
+| [`ekkOS_Forge`](https://docs.ekkos.dev/tools/forge) | Create a new pattern from a learned solution |
+| [`ekkOS_Directive`](https://docs.ekkos.dev/tools/directive) | Create user rules (MUST/NEVER/PREFER/AVOID) |
+| [`ekkOS_Context`](https://docs.ekkos.dev/tools/context) | Get relevant context for a task |
+| [`ekkOS_Capture`](https://docs.ekkos.dev/tools/capture) | Capture a memory event |
+| [`ekkOS_Codebase`](https://docs.ekkos.dev/tools/codebase) | Search project codebase embeddings |
+| [`ekkOS_Recall`](https://docs.ekkos.dev/tools/recall) | Recall past conversations by time |
 
 ### Pattern Tracking (4)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_Track` | Track when a memory/pattern is applied |
-| `ekkOS_Outcome` | Record success/failure of applied patterns |
-| `ekkOS_Detect` | Auto-detect which patterns were used in a response |
-| `ekkOS_Reflect` | Analyze a response for improvement opportunities |
+| [`ekkOS_Track`](https://docs.ekkos.dev/tools/track) | Track when a pattern is applied |
+| [`ekkOS_Outcome`](https://docs.ekkos.dev/tools/outcome) | Record success/failure of applied patterns |
+| [`ekkOS_Detect`](https://docs.ekkos.dev/tools/detect) | Auto-detect which patterns were used |
+| [`ekkOS_Reflect`](https://docs.ekkos.dev/tools/reflect) | Analyze a response for improvements |
 
 ### Utility (3)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_Stats` | Get statistics for all memory layers |
-| `ekkOS_Summary` | Get human-readable summary of recent ekkOS activity |
-| `ekkOS_Conflict` | Check if proposed action conflicts with directives |
+| [`ekkOS_Stats`](https://docs.ekkos.dev/tools/stats) | Get statistics for all memory layers |
+| [`ekkOS_Summary`](https://docs.ekkos.dev/tools/summary) | Get human-readable activity summary |
+| [`ekkOS_Conflict`](https://docs.ekkos.dev/tools/conflict) | Check if action conflicts with directives |
 
 ### Plan Management (8)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_Plan` | Create a new structured plan (steps for a task) |
-| `ekkOS_Plans` | List agent plans for the current user |
-| `ekkOS_PlanStatus` | Update plan status (draft/in_progress/completed/archived) |
-| `ekkOS_PlanStep` | Mark a plan step as complete or incomplete |
-| `ekkOS_Generate` | Generate a plan using LLM based on context |
-| `ekkOS_SaveTemplate` | Save a plan as a reusable template |
-| `ekkOS_Templates` | List available plan templates |
-| `ekkOS_FromTemplate` | Create a new plan from a template |
+| [`ekkOS_Plan`](https://docs.ekkos.dev/tools/plan) | Create a new structured plan |
+| [`ekkOS_Plans`](https://docs.ekkos.dev/tools/plans) | List agent plans for the current user |
+| [`ekkOS_PlanStatus`](https://docs.ekkos.dev/tools/plan-status) | Update plan status |
+| [`ekkOS_PlanStep`](https://docs.ekkos.dev/tools/plan-step) | Mark a plan step complete/incomplete |
+| [`ekkOS_Generate`](https://docs.ekkos.dev/tools/generate) | Generate a plan using AI |
+| [`ekkOS_SaveTemplate`](https://docs.ekkos.dev/tools/save-template) | Save a plan as reusable template |
+| [`ekkOS_Templates`](https://docs.ekkos.dev/tools/templates) | List available plan templates |
+| [`ekkOS_FromTemplate`](https://docs.ekkos.dev/tools/from-template) | Create plan from template |
 
 ### Secrets Management (5)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_StoreSecret` | Securely store sensitive data (API keys, passwords, tokens) |
-| `ekkOS_GetSecret` | Retrieve and decrypt a stored secret |
-| `ekkOS_ListSecrets` | List all stored secrets (metadata only, no values) |
-| `ekkOS_DeleteSecret` | Permanently delete a stored secret |
-| `ekkOS_RotateSecret` | Update a secret with a new value |
+| [`ekkOS_StoreSecret`](https://docs.ekkos.dev/tools/store-secret) | Securely store sensitive data |
+| [`ekkOS_GetSecret`](https://docs.ekkos.dev/tools/get-secret) | Retrieve a stored secret |
+| [`ekkOS_ListSecrets`](https://docs.ekkos.dev/tools/list-secrets) | List all stored secrets (metadata only) |
+| [`ekkOS_DeleteSecret`](https://docs.ekkos.dev/tools/delete-secret) | Permanently delete a secret |
+| [`ekkOS_RotateSecret`](https://docs.ekkos.dev/tools/rotate-secret) | Update a secret with new value |
 
 ### Schema Awareness (2)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_IndexSchema` | Index database/type schemas for field name awareness |
-| `ekkOS_GetSchema` | Get indexed schema for a specific table/type |
+| [`ekkOS_IndexSchema`](https://docs.ekkos.dev/tools/index-schema) | Index database/type schemas |
+| [`ekkOS_GetSchema`](https://docs.ekkos.dev/tools/get-schema) | Get schema for a table/type |
 
 ### Portability (4)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_Export` | Export all memory data as portable JSON backup |
-| `ekkOS_Import` | Import memory data from backup (auto-deduplication) |
-| `ekkOS_Snapshot` | Create point-in-time memory snapshot |
-| `ekkOS_Sync` | Synchronize local memory with cloud |
+| [`ekkOS_Export`](https://docs.ekkos.dev/tools/export) | Export memory data as JSON backup |
+| [`ekkOS_Import`](https://docs.ekkos.dev/tools/import) | Import memory from backup |
+| [`ekkOS_Snapshot`](https://docs.ekkos.dev/tools/snapshot) | Create point-in-time snapshot |
+| [`ekkOS_Sync`](https://docs.ekkos.dev/tools/sync) | Synchronize with cloud |
 
 ### Project Setup (2)
 | Tool | Description |
 |------|-------------|
-| `ekkOS_ProjectInit` | Initialize ekkOS for a new project |
-| `ekkOS_Ingest` | Bulk ingest data into memory layers |
+| [`ekkOS_ProjectInit`](https://docs.ekkos.dev/tools/project-init) | Initialize ekkOS for a project |
+| [`ekkOS_Ingest`](https://docs.ekkos.dev/tools/ingest) | Bulk ingest data into memory |
 
 ---
 
