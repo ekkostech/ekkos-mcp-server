@@ -88,59 +88,76 @@ The MCP server will be available in all chat sessions.
 
 ---
 
-## Available Tools
+## 35 MCP Tools
 
-### `ekkOS_Search`
+Your AI gets access to **35 memory tools** across 8 categories:
 
-Search your memory for patterns, solutions, and past conversations.
+### Core Memory (7)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_Search` | Search all 11 memory layers for patterns, solutions, and context |
+| `ekkOS_Forge` | Create a new pattern from a learned solution |
+| `ekkOS_Directive` | Create user rules (MUST/NEVER/PREFER/AVOID) |
+| `ekkOS_Context` | Get relevant context for a task (episodes + patterns + plan) |
+| `ekkOS_Capture` | Capture a memory event (code change, chat, command, etc.) |
+| `ekkOS_Codebase` | Search project codebase embeddings |
+| `ekkOS_Recall` | Recall past conversations by time |
 
-```
-You: "How did we fix the auth timeout issue?"
-AI: [Searches memory] "Found it! Here's the solution we used..."
-```
+### Pattern Tracking (4)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_Track` | Track when a memory/pattern is applied |
+| `ekkOS_Outcome` | Record success/failure of applied patterns |
+| `ekkOS_Detect` | Auto-detect which patterns were used in a response |
+| `ekkOS_Reflect` | Analyze a response for improvement opportunities |
 
-### `ekkOS_Forge`
+### Utility (3)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_Stats` | Get statistics for all memory layers |
+| `ekkOS_Summary` | Get human-readable summary of recent ekkOS activity |
+| `ekkOS_Conflict` | Check if proposed action conflicts with directives |
 
-Save a solution as a reusable pattern.
+### Plan Management (8)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_Plan` | Create a new structured plan (steps for a task) |
+| `ekkOS_Plans` | List agent plans for the current user |
+| `ekkOS_PlanStatus` | Update plan status (draft/in_progress/completed/archived) |
+| `ekkOS_PlanStep` | Mark a plan step as complete or incomplete |
+| `ekkOS_Generate` | Generate a plan using LLM based on context |
+| `ekkOS_SaveTemplate` | Save a plan as a reusable template |
+| `ekkOS_Templates` | List available plan templates |
+| `ekkOS_FromTemplate` | Create a new plan from a template |
 
-```
-AI: [After fixing a bug]
-    "I've saved this solution. It will be available for future sessions."
-```
+### Secrets Management (5)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_StoreSecret` | Securely store sensitive data (API keys, passwords, tokens) |
+| `ekkOS_GetSecret` | Retrieve and decrypt a stored secret |
+| `ekkOS_ListSecrets` | List all stored secrets (metadata only, no values) |
+| `ekkOS_DeleteSecret` | Permanently delete a stored secret |
+| `ekkOS_RotateSecret` | Update a secret with a new value |
 
-### `ekkOS_Directive`
+### Schema Awareness (2)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_IndexSchema` | Index database/type schemas for field name awareness |
+| `ekkOS_GetSchema` | Get indexed schema for a specific table/type |
 
-Create rules your AI must follow.
+### Portability (4)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_Export` | Export all memory data as portable JSON backup |
+| `ekkOS_Import` | Import memory data from backup (auto-deduplication) |
+| `ekkOS_Snapshot` | Create point-in-time memory snapshot |
+| `ekkOS_Sync` | Synchronize local memory with cloud |
 
-```
-You: "Always use TypeScript strict mode"
-AI: "Rule saved. I'll follow this going forward."
-```
-
-**Rule types:**
-- **MUST** — Always do this
-- **NEVER** — Never do this
-- **PREFER** — Prefer this approach
-- **AVOID** — Try to avoid this
-
-### `ekkOS_Recall`
-
-Find past conversations by topic or time.
-
-```
-You: "What did we decide about the database schema?"
-AI: [Searches conversations] "We discussed this 2 weeks ago..."
-```
-
-### `ekkOS_Conflict`
-
-Check an action against your rules before executing.
-
-```
-AI: [Before deleting files]
-    "Let me check if this violates any rules..."
-    "⚠️ CONFLICT: This violates a NEVER rule. I'll ask first."
-```
+### Project Setup (2)
+| Tool | Description |
+|------|-------------|
+| `ekkOS_ProjectInit` | Initialize ekkOS for a new project |
+| `ekkOS_Ingest` | Bulk ingest data into memory layers |
 
 ---
 
