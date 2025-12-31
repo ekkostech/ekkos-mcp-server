@@ -1,6 +1,33 @@
-# ekkOS™ Memory MCP Server
+# ekkOS Memory MCP Server
 
-Give your AI agent (Claude, GPT-4, etc.) in Cursor, Windsurf, or VS Code a persistent memory. It remembers solutions, learns from mistakes, and gets smarter over time.
+This repository contains the **official, canonical MCP server** for ekkOS — the persistent memory layer for AI coding assistants.
+
+> **Note:** Forks or mirrors of this repository may be outdated. For the most current version, always refer to the [npm package](https://www.npmjs.com/package/@ekkos/mcp-server) or [docs.ekkos.dev](https://docs.ekkos.dev).
+
+---
+
+## What This Package Does
+
+The ekkOS MCP server gives your AI assistant persistent memory across sessions. Your AI can:
+
+- **Search** for patterns, solutions, and past conversations
+- **Save** solutions that work for future retrieval
+- **Follow** rules you define (MUST/NEVER/PREFER/AVOID)
+- **Check** actions against your rules before executing
+
+This works with Claude Code, Cursor, Windsurf, VS Code, and other MCP-compatible tools.
+
+---
+
+## What This Package Does NOT Document
+
+This package intentionally does not describe:
+- Internal system architecture
+- How patterns are ranked or selected
+- Server-side processing logic
+- Infrastructure topology
+
+---
 
 ## Quick Start
 
@@ -57,271 +84,130 @@ npm install -g @ekkos/mcp-server
 
 ### 4. Restart Your IDE
 
-The MCP server will be available in all chat sessions. Your AI can now remember!
+The MCP server will be available in all chat sessions.
 
-## How It Works
+---
 
-Your AI agent can now access a 10-layer memory system that stores:
+## Available Tools
 
-- **Patterns** - Proven solutions that worked
-- **Conversations** - Past discussions and problem-solving sessions
-- **Directives** - Rules your AI must follow (MUST/NEVER/PREFER/AVOID)
-- **Codebase** - Semantic search across your project
-- **And more** - Episodic memory, procedural workflows, collective knowledge
+### `ekkOS_Search`
 
-When you ask a question, your AI searches this memory first, finds relevant solutions, and applies them automatically.
-
-## Core Tools
-
-### `search_memory` 🔍
-
-**What it does:** Searches all your memory layers to find relevant patterns, solutions, and past conversations.
-
-**When to use:** Your AI calls this automatically before answering technical questions. It's the primary way your AI remembers.
-
-**Example:**
+Search your memory for patterns, solutions, and past conversations.
 
 ```
 You: "How did we fix the auth timeout issue?"
-
-AI: [Searches memory automatically]
-    "Found it! We used the auth-timeout-mitigation pattern
-     from last week. Here's the solution..."
+AI: [Searches memory] "Found it! Here's the solution we used..."
 ```
 
-**What you get back:**
+### `ekkOS_Forge`
 
-- Relevant patterns with success rates
-- Past conversations about similar problems
-- Code examples that worked
-- Solutions sorted by how well they worked
-
----
-
-### `forge_pattern` 🔥
-
-**What it does:** Saves a solution that worked as a reusable pattern. Future AI agents (including yourself) will find it automatically.
-
-**When to use:** After you solve a problem, fix a bug, or discover a better approach. Your AI should call this automatically, but you can also trigger it.
-
-**Example:**
+Save a solution as a reusable pattern.
 
 ```
 AI: [After fixing a bug]
-    "I've saved this solution as a pattern. Next time we
-     encounter this issue, I'll remember the fix instantly."
+    "I've saved this solution. It will be available for future sessions."
 ```
 
-**What happens:**
+### `ekkOS_Directive`
 
-- Pattern is stored in memory
-- Becomes searchable immediately
-- Success rate tracked over time
-- Automatically suggested for similar problems
-
----
-
-### `forge_directive` 📜
-
-**What it does:** Creates a rule your AI must follow. These are MUST/NEVER/PREFER/AVOID rules that guide behavior.
-
-**When to use:** When you want to establish permanent rules for how your AI should behave.
-
-**Example:**
+Create rules your AI must follow.
 
 ```
 You: "Always use TypeScript strict mode"
-
-AI: [Creates directive]
-    "Rule saved. I'll always use strict mode going forward."
+AI: "Rule saved. I'll follow this going forward."
 ```
 
-**Types of rules:**
+**Rule types:**
+- **MUST** — Always do this
+- **NEVER** — Never do this
+- **PREFER** — Prefer this approach
+- **AVOID** — Try to avoid this
 
-- **MUST** - Always do this (highest priority)
-- **NEVER** - Never do this (high priority)
-- **PREFER** - Prefer this approach (medium priority)
-- **AVOID** - Try to avoid this (lower priority)
+### `ekkOS_Recall`
 
-**What happens:**
-
-- Rule is enforced in all future interactions
-- AI checks against rules before taking actions
-- Rules can be project-specific or global
-
----
-
-### `recall_conversation` 💬
-
-**What it does:** Finds past conversations about a topic, even from days or weeks ago.
-
-**When to use:** When you want to remember what you discussed before, or check if you've already solved a problem.
-
-**Example:**
+Find past conversations by topic or time.
 
 ```
 You: "What did we decide about the database schema?"
-
-AI: [Searches past conversations]
-    "We discussed this 2 weeks ago. You decided to use
-     PostgreSQL with JSONB for flexible fields..."
+AI: [Searches conversations] "We discussed this 2 weeks ago..."
 ```
 
-**What you get back:**
+### `ekkOS_Conflict`
 
-- Relevant excerpts from past conversations
-- Context about decisions made
-- Solutions you've tried before
-- Semantic matches (finds related topics, not just keywords)
-
----
-
-### `check_conflict` ⚖️
-
-**What it does:** Validates an action against your rules and patterns before executing it. Prevents your AI from doing something that violates your preferences.
-
-**When to use:** Before executing destructive operations, deploying changes, or modifying critical configs.
-
-**Example:**
+Check an action against your rules before executing.
 
 ```
 AI: [Before deleting files]
-    "I want to delete /tmp files. Let me check if this
-     violates any rules..."
-
-    [Checks conflicts]
-    "⚠️ CONFLICT: This violates NEVER rule: 'Never delete
-     files without user confirmation'. I'll ask first."
+    "Let me check if this violates any rules..."
+    "⚠️ CONFLICT: This violates a NEVER rule. I'll ask first."
 ```
-
-**What you get back:**
-
-- List of violated rules (if any)
-- Conflicting patterns
-- Recommendations to proceed safely
-- Clear explanation of why it conflicts
 
 ---
 
-## How to Use It Day-to-Day
+## Day-to-Day Usage
 
-### When Starting Work
+**Starting work:** Your AI automatically searches memory when you ask questions.
 
-Your AI automatically searches memory when you ask questions. You don't need to do anything special - just ask:
-
-```
-You: "Fix the authentication bug"
-AI: [Searches memory] "Found 3 solutions from past work..."
-```
-
-### When Solving Problems
-
-After your AI solves something, it should automatically save it as a pattern:
-
-```
-AI: [After fixing bug]
-    "Solution saved. Future agents will find this automatically."
-```
-
-If it doesn't, you can remind it:
-
+**After solving problems:** Tell your AI to save the solution:
 ```
 You: "Save this solution as a pattern"
 ```
 
-### When Setting Rules
-
-Tell your AI what you want it to always/never do:
-
+**Setting rules:** Tell your AI what to always/never do:
 ```
 You: "Never use `any` type in TypeScript"
-AI: [Creates directive] "Rule saved. I'll avoid `any` going forward."
 ```
 
-### When Checking Past Work
-
-Ask about past conversations:
-
+**Checking past work:**
 ```
 You: "What did we decide about the API structure?"
-AI: [Searches conversations] "We discussed this last week..."
 ```
 
-## The Golden Loop
+---
 
-ekkOS uses a continuous learning cycle that makes your AI smarter:
+## What Gets Stored
 
-1. **Retrieve** - `search_memory` finds relevant patterns
-2. **Apply** - AI uses patterns to solve problems
-3. **Measure** - System tracks if solutions worked
-4. **Learn** - `forge_pattern` saves new solutions
+- **Patterns** — Solutions you've saved
+- **Conversations** — Past discussions (searchable)
+- **Directives** — Rules your AI follows
+- **Codebase context** — Your project files (semantic search)
 
-This creates a self-improving system. Every problem solved makes future problems easier.
+---
 
 ## Troubleshooting
 
 ### MCP Server Not Appearing
 
-- Make sure Node.js 18+ is installed
-- Check your API key is correct in the config file
-- Restart your IDE after adding the config
-- Check IDE logs for connection errors
+- Ensure Node.js 18+ is installed
+- Check your API key is correct
+- Restart your IDE after adding config
+- Check IDE logs for errors
 
 ### No Patterns Found
 
-- You need to forge some patterns first (solve problems and save them)
-- Check your API key has access to your memory
-- Make sure `EKKOS_USER_ID` is set for user-scoped patterns
+- You need to save some patterns first
+- Verify your API key has access
+- Ensure `EKKOS_USER_ID` is set
 
 ### Authentication Errors
 
 - Verify your API key at https://platform.ekkos.dev
 - Check the key hasn't expired
-- Make sure the key has correct permissions
-
-## What Gets Stored
-
-Your memory includes:
-
-- **Patterns** - Solutions that worked, with success rates
-- **Conversations** - Past discussions, searchable semantically
-- **Directives** - Rules your AI follows (MUST/NEVER/PREFER/AVOID)
-- **Codebase** - Semantic search across your project files
-- **Episodic** - Problem-solving sessions and workflows
-- **Procedural** - Step-by-step processes that worked
-- **Collective** - Knowledge shared across AI agents
-- **Code** - Code embeddings for finding similar code
-
-All of this is searchable instantly when your AI needs it.
-
-## Example Workflow
-
-```
-1. You: "Fix the login bug"
-
-2. AI: [Calls search_memory("login bug fix")]
-    "Found 2 patterns from past work. Applying the
-     highest-success solution..."
-
-3. AI: [Fixes bug using pattern]
-    "Fixed! This solution has worked 8 times before."
-
-4. AI: [Calls forge_pattern automatically]
-    "Saved this fix as a pattern for next time."
-
-5. Next time: AI remembers instantly and applies the fix
-```
-
-## Related
-
-- **Platform Dashboard**: https://platform.ekkos.dev
-- **Documentation**: https://docs.ekkos.dev
-- **GitHub**: https://github.com/ekkos-ai/ekkos
-
-## License
-
-MIT
 
 ---
 
-**ekkOS™** - The memory substrate for AI agents. Making AI smarter, one pattern at a time. 🧠♾️
+## Links
+
+- **Documentation:** [docs.ekkos.dev](https://docs.ekkos.dev)
+- **Platform:** [platform.ekkos.dev](https://platform.ekkos.dev)
+- **Website:** [ekkos.dev](https://ekkos.dev)
+
+---
+
+## License & Trademarks
+
+**ekkOS** and the ekkOS logo are trademarks of ekkOS Technologies Inc.
+
+This package is provided under the MIT license. Unauthorized reproduction or distribution of ekkOS trademarks or branding assets is prohibited.
+
+For licensing inquiries: [ekkoslabs.com](https://ekkoslabs.com)

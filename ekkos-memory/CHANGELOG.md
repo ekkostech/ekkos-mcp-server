@@ -46,13 +46,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release of ekkOS Memory MCP Server
 - MCP Protocol 2025-06-18 support
 - Tools:
-  - `search_memory` - Query all memory layers
-  - `get_context` - Get unified context
-  - `capture_event` - Store learning episodes
-  - `forge_pattern` - Create new patterns
-  - `track_application` - Track pattern usage
-  - `record_outcome` - Record pattern outcomes
-  - `get_memory_stats` - Get system statistics
+  - `ekkOS_Search` - Query all memory layers
+  - `ekkOS_Context` - Get unified context
+  - `ekkOS_Capture` - Store learning episodes
+  - `ekkOS_Forge` - Create new patterns
+  - `ekkOS_Track` - Track pattern usage
+  - `ekkOS_Outcome` - Record pattern outcomes
+  - `ekkOS_Stats` - Get system statistics
 - HTTP/SSE transport support
 - Cloud deployment support
 
@@ -62,5 +62,90 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `1.1.0` - Improved reliability with fallback mechanisms
 - `1.0.0` - Initial release
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
